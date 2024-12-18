@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/editprofile.css">
+    <title>Edit Profile</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/profilepage.css">
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="/javascript/profile.js"></script>
+        <script src="https://kit.fontawesome.com/d2f76bf8f3.js" crossorigin="anonymous"></script>
+        <title>Edit Page</title>
+    </head>
+
+    <body>
+        <!-- <div class="picture">
+            <img class="image" src="/uploads/<%=user.photo%>" alt="User's Profile Picture">
+        </div> -->
+
+        <!-- <form action="/api/v1/editprofile/photo" method="POST" enctype='multipart/form-data'>
+           
+
+
+        </form> -->
+
+
+
+        <!-- <div class="x">
+            <img src="/uploads/<%=user.photo%>" alt="User Profile Picture" class="dp" />
+
+            <div class="file-wrapper">
+                <i class="fas fa-user-circle"></i>
+
+                <p style="margin-top: 5px">Profile Picture</p>
+            </div>
+        </div> -->
+        <div class="container">
+            <div class="x picture">
+                <img src="/uploads/<%=user.photo%>" alt="User Profile Picture" class="dp" />
+    
+                <div class="file-wrapper">
+                    <i class="fas fa-user-circle"></i>
+    
+                    <p style="margin-top: 5px">Profile Picture</p>
+                </div>
+            </div>
+             
+
+
+            <div class="name">
+                <h1 class="fnt">
+                    <span>
+                        <%= user.firstName%>
+                            <%= user.lastName %>
+                    </span>
+
+                </h1>
+            </div>
+
+            <div class="icons">
+                <span>
+                    <%=user.rating%> <i class="fas fa-star"></i>
+                </span>
+
+                </i>
+            </div>
+
+
+
+            <div id="cont">
+                <form action="/api/v1/editprofile/basicinfo" method="POST" enctype="multipart/form-data">
+                    <input type="file" id="dp-file" style="display: none" name="photo" />
+
+                    <div class="bio">
+                        <p>
+                            <textarea name="bio">
+                                <%= user.bio %>
+                            </textarea>
+                        </p>
+                    </div>
+                    <div class="Basic-Info">
+                        <div class="xyz">
+                            <h2><i class="fas fa-info-circle"></i> Basic-Info</h2>
+
+                        </div>
+                        <div class="s1">
+                            <div class="is1">
+                                <p>First Name</p>
+                            </div>
+                            <div class="is2">
+                                <p>
+                                    <input name="firstName" value=" <%= user.firstName %>" type="text">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="s2">
+                            <div class="is3">
+                                <p>Last Name</p>
+                            </div>
+                            <div class="is4">
+                                <p>
+                                    <input name="lastName" value="<%=user.lastName %>" type="text">
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="s3">
+                            <div class="is4">
+                                <p>Gender</p>
+                            </div>
+                            <div class="is5">
+                                <p>
+                                    <select name="gender" id="" value="Male">
+                                        <option value="Male">Male</option>
+                                        <option value="Male">Female</option>
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="s4">
+                            <div class="is6">
+                                <p>Age</p>
+                            </div>
+                            <div class="is7">
+                                <p>
+                                    <input name="age" value="<%= user.age %>" type="number">
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="save1">
+                        <button class="save photo-upload" type="submit"><i class="fas fa-save"></i> Save </button>
+                    </div>
+                </form>
+
+                <div class="Education">
+                    <div class="course">
+                        <h2><i class="fas fa-book-reader"></i> Education</h2>
+                        <!-- <button class="add action3"><i class="fas fa-plus"></i></button> -->
+                    </div>
+
+                    <div class="main info2">
+                        <!-- <%if(user.matriculation.length!=0){%> -->
+                        <div class="info3">
+
+
+                            <%if(user.matriculation){%>
+                                <form action="/api/v1/editprofile/matric" method="post">
+                                    <div class="innerflex">
+                                        <p>
+                                            <%=user.matriculation.schoolName %> - 10th -
+                                                <%=user.matriculation.totalPercentage %> %
+                                        </p>
+                                        <p>
+                                            <button class="del" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                        </p>
+                                    </div>
+                                </form>
+
+
+
+
+                                <%}%>
+
+
+
+                        </div>
+
+                        <!-- <%}%> -->
+                        <!-- <%if(user.intermediate){%> -->
+                        <div class="info3">
+                            <%if(user.intermediate){%>
+
+                                <form action="/api/v1/editprofile/inter" method="post">
+                                    <div class="innerflex">
+                                        <p>
+                                            <%=user.intermediate.schoolName %> - 12th -
+                                                <%=user.intermediate.totalPercentage %> %
+                                        </p>
+                                        <p>
+                                            <button class="del" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                        </p>
+                                    </div>
+                                </form>
+
+
+
+
+                                <%}%>
+                        </div>
+
+                        <!-- <%}%> -->
+
+                        <div class="info3">
+                            <% if(user.graduation){ %>
+                                <% user.graduation.forEach(graduation=>{ %>
+                                    <form action="/api/v1/editprofile/grad/<%=graduation._id%>" method="POST">
+                                        <div class="innerflex">
+                                            <p class="text2 select5">
+                                                <%=graduation.collegeName%> Semester
+                                                    <%= graduation.sem%>
+                                            </p>
+                                            <p class="value2 select6">
+                                                <button class="del" type="submit"><i
+                                                        class="fas fa-trash-alt"></i></button>
+                                            </p>
+                                        </div>
+                                    </form>
+                                    <% }) %>
+                                        <% } %>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="Skills">
+                    <div class="course">
+                        <h2><i class="fas fa-brain"></i> Skills</h2>
+                        <!-- <button class="add action3"><i class="fas fa-plus"></i></button> -->
+                    </div>
+
+                    <div>
+                        <div class="info3">
+
+
+                            <%if(user.skills){%>
+                                <% user.skills.forEach(skills=>{%>
+                                    <form action="/api/v1/editprofile/skills/<%=skills._id%>" method="POST">
+                                        <div class="innerflex">
+                                            <p>
+                                                <%=skills.title %>
+                                            </p>
+                                            <p>
+                                                <button class="del" type="submit"><i
+                                                        class="fas fa-trash-alt"></i></button>
+                                            </p>
+                                        </div>
+                                    </form>
+                                    <%})%>
+                                        <% }%>
+
+
+
+                                            <!-- <% if(user.skills){ %>
+                         <% user.skills.forEach(function(skills){ %>
+                            <a href="<%=skills.link %>" target="_blank" class="value3"><i class="fas fa-link"></i></a>
+                            <% }) %>
+                               <% } %> -->
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="rR">
+                    <div class="course">
+                        <h2><i class="fas fa-trophy"></i> Achievement and Responsibilites</h2>
+                        <!-- <button class="add action4"><i class="fas fa-plus"></i></button> -->
+                    </div>
+                    <div class="block">
+
+
+                        <% if(user.achievements){ %>
+                            <% user.achievements.forEach(achievements=>{ %>
+                                <form action="/api/v1/editprofile/achievements/<%=achievements._id%>" method="POST">
+                                    <div class="ach">
+                                        <p class="text3">
+                                            <%=achievements.title %>
+                                        </p>
+                                        <p class="value3">
+                                            <button class="del" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                        </p>
+                                    </div>
+
+                                </form>
+                                <% }) %>
+                                    <% } %>
+
+                                        <!-- <% if(user.achievements){ %>
+                                  <% user.achievements.forEach(achievements=>{ %>
+                                     
+                                     <p class="value3">
+                                        <%=achievements.description%>
+                                     </p>
+                                     <% }) %>
+                                        <% } %> -->
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <script>
+            var inputFile = document.getElementById('dp-file');
+            var fileWrapper = document.querySelectorAll('div')[1];
+            fileWrapper.addEventListener('click', function () {
+                inputFile.click();
+            });
+
+            inputFile.addEventListener('change', function () {
+                const file = this.files[0];
+                console.log(file);
+                var reader = new FileReader();
+                reader.onload = function () {
+                    const result = reader.result;
+                    document.querySelector('img').setAttribute('src', result);
+                };
+                reader.readAsDataURL(file);
+            });
+        </script>
+
+        <script src="/javascript/editprofile.js"></script>
+
+    </body>
+
+
+    </html>
+</body>
+
+</html>
